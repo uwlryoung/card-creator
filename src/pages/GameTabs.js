@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
-import NavBar from '../components/NavBar';
+import NavBar from "../components/Navigation";
 import Faeria from "./games/Faeria";
 import Roguebook from "./games/Roguebook";
 import Scrolls from "./games/Scrolls";
 
-function GameTabs({ currentGame, handleGameChange }) {
+function GameTabs() {
+  const [currentGame, setCurrentGame] = useState("");
+  const handleGameChange = (game) => setCurrentGame(game);
+
   return (
     <>
-    <NavBar />
+      <NavBar />
       <Tabs
         defaultActiveKey="profile"
         id="justify-tab-example"
@@ -21,7 +24,6 @@ function GameTabs({ currentGame, handleGameChange }) {
           title="Faeria"
           onClick={() => handleGameChange("Faeria")}
         >
-          Tab content for Faeria
           <Faeria />
         </Tab>
         <Tab
@@ -29,7 +31,6 @@ function GameTabs({ currentGame, handleGameChange }) {
           title="Roguebook"
           onClick={() => handleGameChange("Roguebook")}
         >
-          Tab content for Roguebook
           <Roguebook />
         </Tab>
         <Tab
@@ -37,7 +38,6 @@ function GameTabs({ currentGame, handleGameChange }) {
           title="Scrolls"
           onClick={() => handleGameChange("Scrolls")}
         >
-          Tab content for Scrolls
           <Scrolls />
         </Tab>
       </Tabs>
@@ -46,6 +46,3 @@ function GameTabs({ currentGame, handleGameChange }) {
 }
 
 export default GameTabs;
-
-// Below is a possible icon to use for the page, but have to give credit on the page somewhere.
-// {/* <a href="https://www.flaticon.com/free-icons/poker" title="poker icons">Poker icons created by Freepik - Flaticon</a> */}
